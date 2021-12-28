@@ -8,14 +8,14 @@ from decouple import config
 
 class Config(object):
 
-    basedir = os.path.abspath(os.path.dirname(__file__))
+    # basedir = os.path.abspath(os.path.dirname(__file__))
 
     # Set up the App SECRET_KEY
     SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_007')
 
     # This will create a file in <app> FOLDER
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'bp.db')
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://susi:root@localhost/bp'
-    # + os.path.join(basedir, '')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
@@ -28,14 +28,14 @@ class ProductionConfig(Config):
     REMEMBER_COOKIE_DURATION = 3600
 
     # # PostgreSQL database
-    # SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}'.format(
-    #     config('DB_ENGINE', default='postgresql'),
-    #     config('DB_USERNAME', default='appseed'),
-    #     config('DB_PASS', default='pass'),
-    #     config('DB_HOST', default='localhost'),
-    #     config('DB_PORT', default=5432),
-    #     config('DB_NAME', default='appseed-flask')
-    # )
+    SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}'.format(
+        config('DB_ENGINE', default='phpmyadmin'),
+        config('DB_USERNAME', default='susi'),
+        config('DB_PASS', default='root'),
+        config('DB_HOST', default='localhost'),
+        config('DB_PORT', default=3600),
+        config('DB_NAME', default='bp')
+    )
 
 
 class DebugConfig(Config):
